@@ -2,12 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public class ContainInTheLine extends Factory implements Searchable {
-    @Override
-    public Searchable createSearch() {
-        return new ContainInTheLine();
-    }
-
+public class ContainInTheLine implements Searchable {
     @Override
     public void search(List<String> inputList, List<String> patternsList) {
         for (String inputLine : inputList) {

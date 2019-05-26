@@ -2,12 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public class DistanceEditing extends Factory implements Searchable {
-    @Override
-    public Searchable createSearch() {
-        return new DistanceEditing();
-    }
-
+public class DistanceEditing implements Searchable {
     @Override
     public void search(List<String> inputList, List<String> patternsList) {
         Levenshtein lev = new Levenshtein();

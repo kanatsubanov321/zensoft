@@ -2,11 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public class ExactlyTheSame extends Factory implements Searchable {
-    @Override
-    public Searchable createSearch() {
-        return new ExactlyTheSame();
-    }
+public class ExactlyTheSame implements Searchable {
 
     @Override
     public void search(List<String> inputList, List <String> patternsList) {
