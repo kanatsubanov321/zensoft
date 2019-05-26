@@ -1,18 +1,16 @@
 package com.company;
 
-import java.util.List;
-
 abstract class Factory {
-    public static Searchable getSearch(Object object, List<String> inputList, List<String> patternsList) {
+
+    public static Searchable getSearch(String output) {
         Searchable s = null;
-        if (object instanceof ContainInTheLine) {
-            s = new ContainInTheLine();
-        } else if (object instanceof ExactlyTheSame) {
+        if (output.equals("first")) {
             s = new ExactlyTheSame();
-        } else if (object instanceof DistanceEditing) {
+        } else if (output.equals("second")) {
+            s = new ContainInTheLine();
+        } else if (output.equals("third")) {
             s = new DistanceEditing();
         }
-        s.search(inputList, patternsList);
         return s;
     }
 }

@@ -1,29 +1,33 @@
 package com.company;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static List<String> inputList;
-    private static List<String> patternsList;
+    private static Searchable searchable;
 
     public static void main(String[] args) throws Exception {
         FileReader inputReader = new FileReader("input.txt");
         FileReader patternsReader = new FileReader("patterns.txt");
 
-        inputList = readFromFile(inputReader);
-        patternsList = readFromFile(patternsReader);
+        List<String> inputList = convertToList(inputReader);
+        List<String> patternsList = convertToList(patternsReader);
 
-        Factory.getSearch(new ExactlyTheSame(), inputList, patternsList);
-        Factory.getSearch(new ContainInTheLine(), inputList, patternsList);
-        Factory.getSearch(new DistanceEditing(), inputList, patternsList);
+        searchable = Factory.getSearch("first");
+        searchable.search(inputList, patternsList);
+        System.out.println("*****************************");
+        searchable = Factory.getSearch("second");
+        searchable.search(inputList, patternsList);
+        System.out.println("*****************************");
+        searchable = Factory.getSearch("third");
+        searchable.search(inputList, patternsList);
+
     }
 
-    public static List<String> readFromFile(FileReader file) {
+    public static List<String> convertToList(FileReader file) {
         List<String> list = new ArrayList<>();
         Scanner sc;
         try {
