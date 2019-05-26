@@ -16,13 +16,13 @@ public class Main {
         List<String> inputList = convertToList(inputReader);
         List<String> patternsList = convertToList(patternsReader);
 
-        searchable = Factory.getSearch("first");
+        searchable = Factory.getSearch("exactlyTheSame");
         searchable.search(inputList, patternsList);
         System.out.println("*****************************");
-        searchable = Factory.getSearch("second");
+        searchable = Factory.getSearch("containsInTheLine");
         searchable.search(inputList, patternsList);
         System.out.println("*****************************");
-        searchable = Factory.getSearch("third");
+        searchable = Factory.getSearch("distanceEditing");
         searchable.search(inputList, patternsList);
 
     }
