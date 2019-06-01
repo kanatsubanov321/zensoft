@@ -9,6 +9,16 @@ import java.util.Scanner;
 public class Main {
     private static Searchable searchable;
 
+    public static Searchable getSearch(int byNumber) {
+        switch (byNumber){
+            case 1: searchable = Factory.getSearch("exactlyTheSame"); break;
+            case 2: searchable = Factory.getSearch("containsInTheLine"); break;
+            case 3: searchable = Factory.getSearch("distanceEditing"); break;
+            default: searchable = null;
+        }
+        return searchable;
+    }
+
     public static void main(String[] args) throws Exception {
         FileReader inputReader = new FileReader("input.txt");
         FileReader patternsReader = new FileReader("patterns.txt");
@@ -16,13 +26,13 @@ public class Main {
         List<String> inputList = convertToList(inputReader);
         List<String> patternsList = convertToList(patternsReader);
 
-        searchable = Factory.getSearch("exactlyTheSame");
+        getSearch(1);
         searchable.search(inputList, patternsList);
         System.out.println("*****************************");
-        searchable = Factory.getSearch("containsInTheLine");
+        getSearch(2);
         searchable.search(inputList, patternsList);
         System.out.println("*****************************");
-        searchable = Factory.getSearch("distanceEditing");
+        getSearch(3);
         searchable.search(inputList, patternsList);
 
     }
